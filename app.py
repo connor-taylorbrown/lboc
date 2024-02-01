@@ -8,8 +8,12 @@ class MockClient(QuoteClient):
     def __init__(self, port: int):
         self.address = f'http://localhost:{port}'
 
-    def get(self) -> list[dict]:
+    def quotes(self) -> list[dict]:
         response = requests.get(f'{self.address}/quotes')
+        return response.json()
+    
+    def source(self) -> dict:
+        response = requests.get(f'{self.address}/source')
         return response.json()
 
 
