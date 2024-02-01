@@ -8,16 +8,16 @@ from quotes import QuoteClient
 
 class CloudStorageQuoteClient(QuoteClient):
     def __init__(self, bucket_name: str, object_name: str):
-        self.bucket_name = bucket_name
-        self.object_name = object_name
-
-    def get(self) -> list[dict]:
         client = storage.Client()
-        bucket = client.bucket(self.bucket_name)
-        blob = bucket.blob(self.object_name)
-        quotes = blob.download_as_string()
+        bucket = client.bucket(bucket_name)
+        blob = bucket.blob(object_name)
+        self.content = blob.download_as_string()
 
-        return json.loads(quotes)['quotes']
+    def quotes(self) -> list[dict]:
+        return json.loads(self.content)['quotes']
+    
+    def source(self) -> dict:
+        return json.loads(self.content)['source']
 
 
 gunicorn_logger = logging.getLogger('gunicorn.error')

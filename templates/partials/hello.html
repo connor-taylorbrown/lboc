@@ -8,8 +8,9 @@
         </p>
     </div>
     <div class="px-6 py-4 bg-gray-100">
-        <button class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 transition ease-in-out duration-700" hx-post="/quotes/{{ next }}" hx-swap="outerHTML" hx-target="#card">
-            Click Me
+        <button class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 transition ease-in-out duration-700" hx-get="/quotes/{{ next }}" hx-swap="outerHTML" hx-target="#card">
+            Read More
         </button>
+        <a href="{{ source.link }}" class="px-8 py-2 float-right text-blue-300">source</a>
     </div>
 </div>
