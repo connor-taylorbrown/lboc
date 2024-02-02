@@ -40,7 +40,7 @@ This will invoke `app.create_app()`, and attempt to load data from json-server.
 The production site is deployed and run on Google Cloud, loading data from Cloud Storage. To test locally, Application Default Credentials (ADC) must be set up.
 
 See the following guide: https://cloud.google.com/docs/authentication/application-default-credentials#personal
-1. Substitute with `python3 -m gunicorn --bind :$PORT gcp:app` to test production configuration.
+1. Substitute with `source .env && python3 -m gunicorn --bind :$PORT gcp:app` to test production configuration.
 
 ## Project structure
 This repository is arranged to support running Flask with default configuration. Flask makes use of the following directories:
